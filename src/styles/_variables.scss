@@ -1,0 +1,68 @@
+$brand_primary: #fc0;
+$brand_secondary: #fff5cc;
+$brand_white: #fff;
+$brand_black: #000;
+
+$controls_radius: 0.6rem;
+$controls_color: $brand_black;
+$controls_placeholder_color: $brand_black;
+$controls_border_color: $brand_primary;
+$controls_border_focus_color: $brand_black;
+$controls_background: $brand_white;
+$controls_height_px: 31px;
+
+$search_svg_icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" fill="#{$brand_primary}"><path d="M443 126.2h-2.2c0 0 0 0 0 0-171.1 0-310.1 137.6-312.4 308.2 1.8 171.2 140.8 309 311.8 309h3.5c0.2 0 0.3 0 0.5 0 62.5 0 120.8-18.3 169.7-49.8-5.9-0.1-1.2 8.5 5.5 15.4l196 182.4c9.8 8.9 22.9 14.3 37.2 14.3 30.7 0 55.5-24.8 55.5-55.5 0-16.3-7-31-18.3-41.2l-196.2-179.8-4.4-2.7c41.8-51.1 67.2-117.1 67.2-189.1 0-0.2 0-0.5 0-0.7v-2c-1.9-170.8-140.8-308.5-311.8-308.6h-1.7zM443 688.7h-2.8c0 0 0 0 0 0-140.8 0-255.2-113.1-257.2-253.4 1.7-141 116.2-254.4 257.2-254.5h4.4c140.8 0 255.1 113.1 257.2 253.4-1.8 141.2-116.3 254.6-257.2 254.6h-1.6z"/></svg>' !default;
+
+$country_code: (
+        min-width: 110px,
+        width: 40%,
+);
+
+$dropdown: (
+        background-color: var(--dropdown--backgroun-color),
+        color: var(--dropdown--color),
+        placeholder--color: var(--dropdown--placeholder--color),
+        border: var(--dropdown--border-width) solid var(--dropdown--border-color),
+        border-width: var(--dropdown--border-width),
+        border-color: var(--dropdown--border-color),
+        focus--border-color: var(--dropdown--focus--border-color),
+        border-radius: var(--dropdown--border-radius),
+        padding-x: var(--dropdown--padding-x),
+        single--height: var(--dropdown--single--height),
+        single--padding: var(--dropdown--single--padding),
+        scroll-width: var(--dropdown--scroll-width),
+        scroll-track--bg-color: var(--dropdown--scroll-track--bg-color),
+        scroll-thumb--bg-color: var(--dropdown--scroll-thumb--bg-color),
+        scroll-thumb-hover--bg-color: var(--dropdown--scroll-thumb-hover--bg-color),
+        drop--font-size: var(--dropdown--drop--font-size),
+        item--height: var(--dropdown--item--height),
+        item--padding: calc((var(--dropdown--item--height) - 1.2em) / 2) var(--dropdown--padding-x),
+        active--background-color: var(--dropdown--active--background-color),
+        active--color: var(--dropdown--active--color),
+        search-icon: var(--dropdown-search-icon),
+);
+
+:root {
+  --dropdown--backgroun-color: #{$controls_background};
+  --dropdown--color: #{$controls_color};
+  --dropdown--placeholder--color: #{$controls_placeholder_color};
+  --dropdown--border-width: 1px;
+  --dropdown--border-color: #{$controls_border_color};
+  --dropdown--focus--border-color: #{$controls_border_focus_color};
+  --dropdown--border-radius: #{$controls_radius};
+  --dropdown--padding-x: calc(0.5em + 0.5%);
+  --dropdown--single--height: #{$controls_height_px};
+  --dropdown--drop--color: #{dropdown-var(color)};
+  --dropdown--drop--font-size: 13px;
+  --dropdown--scroll-width: 10px;
+  --dropdown--scroll-track--bg-color: #{rgba($brand_secondary, 0.5)};
+  --dropdown--scroll-thumb--bg-color: #{$brand_primary};
+  --dropdown--scroll-thumb-hover--bg-color: #{darken($brand_primary, 10%)};
+  --dropdown--item--height: #{$controls_height_px};
+  --dropdown--active--background-color: #{$brand_primary};
+  --dropdown--active--color: #{$brand_black};
+  --dropdown-search-icon: #{svg-fill($brand_black, $search_svg_icon, $brand_primary)};
+
+  --country-code--flag--height: 2em;
+  --country-code--results-flag--hight: 2em;
+}

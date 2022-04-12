@@ -1,0 +1,104 @@
+// noinspection ALL
+.prfs-ctphdp {
+  @include dropdown-container;
+
+  &--opened {
+    @include dropdown-container-active();
+  }
+
+  &__single {
+    @include dropdown-single();
+
+    height: 34px;
+    font-size: 13px;
+  }
+
+  &__phonePrefix {
+    display: flex;
+    align-items: center;
+    padding: 0 dropdown-var(padding-x);
+  }
+
+  &__caret {
+    @include dropdown-caret();
+    @include dropdown-caret-closed();
+
+    .prfs-ctphdp--opened & {
+      @include dropdown-caret-opened();
+    }
+  }
+
+  &__phone {
+    display: flex;
+    flex-grow: 1;
+    padding: 0 dropdown-var(padding-x);
+    border: 0;
+    background-color: dropdown-var(background-color);
+    box-shadow: inset 0 0 0 2em dropdown-var(background-color);
+    height: 100%;
+    border-radius: dropdown-var(border-radius);
+
+    &::placeholder {
+      color: dropdown-var(placeholder--color);
+      opacity: 0.5;
+    }
+
+    &:focus {
+      outline: 0;
+    }
+  }
+
+  &__drop {
+    @include dropdown-drop(true);
+  }
+
+  &__prepend {
+    @include dropdown-search();
+  }
+
+  &__results {
+    padding: 0;
+    margin: 0;
+    height: em((34 * 5 - 1), 13);
+    position: relative;
+
+    &:after {
+      //content: '';
+      //position: absolute;
+      //height: 34px;
+      //width: 34px;
+      //border-radius: 50%;
+      //border:  solid 1px red;
+      //top: 50%;
+      //left: 50%;
+      //transform: translate(-50%, -50%);
+      //z-index: 1;
+    }
+
+    > svelte-virtual-list-viewport {
+      @include dropdown-results(false);
+    }
+  }
+
+  prf-transclude,
+  prepend-item {
+    display: flex;
+    width: 100%;
+  }
+
+  &__item {
+    @include dropdown-option();
+
+    &--selected {
+      @include dropdown-option-active();
+    }
+
+    &:hover {
+      @include dropdown-option-active(true);
+    }
+
+    &:nth-last-child(2) {
+      border-bottom: 0;
+    }
+  }
+}

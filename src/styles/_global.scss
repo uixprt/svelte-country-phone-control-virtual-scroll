@@ -1,0 +1,28 @@
+body {
+  font-family: Lato, sans-serif;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+* {
+  &:before,
+  &:after {
+    box-sizing: inherit;
+  }
+}
+
+input {
+  text-transform: inherit;
+  font: inherit;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 30em;
+}
+
+.wrapper {
+  background-color: #000;
+  padding: 1.5em;
+  text-transform: capitalize;
+}

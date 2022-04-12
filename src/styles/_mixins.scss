@@ -1,0 +1,195 @@
+//noinspection SassScssResolvedByNameOnly
+@mixin dropdown-container() {
+  color: dropdown-var(color);
+  background-color: dropdown-var(background-color);
+  border: dropdown-var(border);
+  border-radius: dropdown-var(border-radius);
+  position: relative;
+  user-select: none;
+  line-height: 1.2;
+  letter-spacing: initial;
+}
+
+//noinspection SassScssResolvedByNameOnly
+@mixin dropdown-container-active() {
+  --dropdown--border-color: #{dropdown-var(focus--border-color)};
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+//noinspection SassScssResolvedByNameOnly
+@mixin dropdown-single() {
+  display: flex;
+  justify-content: flex-start;
+  cursor: pointer;
+  height: calc(
+    #{dropdown-var(single--height)} - (#{dropdown-var(border-width)} * 2)
+  );
+  align-items: center;
+  white-space: nowrap;
+}
+
+@mixin dropdown-caret() {
+  padding-left: #{dropdown-var(padding-x)};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &::before {
+    content: '';
+    border: solid transparent;
+    border-width: 5px 4px;
+  }
+}
+
+@mixin dropdown-caret-closed() {
+  &::before {
+    border-top-color: currentColor;
+    border-bottom-width: 0;
+  }
+}
+
+@mixin dropdown-caret-opened() {
+  &::before {
+    border-bottom-color: currentColor;
+    border-top-width: 0;
+    border-bottom-width: 5px;
+  }
+}
+
+//noinspection SassScssResolvedByNameOnly
+@mixin dropdown-drop($active: false) {
+  font-size: dropdown-var(drop--font-size);
+  position: absolute;
+  top: 100%;
+  z-index: 2;
+  background-clip: padding-box;
+  box-shadow: none;
+  padding-top: 1px;
+  width: calc(100% + (#{dropdown-var(border-width)} * 2));
+  text-align: initial;
+  background-color: dropdown-var(background-color);
+  color: dropdown-var(drop--color);
+  border: dropdown-var(border);
+  overflow: hidden;
+  border-bottom-right-radius: dropdown-var(border-radius);
+  border-bottom-left-radius: dropdown-var(border-radius);
+  display: flex;
+  flex-direction: column;
+
+  @if (not $active) {
+    left: -99999px;
+    opacity: 0;
+    transition: max-height 0.3s ease, opacity 0.15s 0.15s ease, left 1ms 0.3s;
+    max-height: 0;
+  }
+
+  @if ($active) {
+    left: calc(#{dropdown-var(border-width)} * -1);
+    max-height: em(250, 13);
+    opacity: 1;
+    transition: max-height 300ms ease, opacity 10ms ease;
+  }
+}
+
+@mixin dropdown-drop-active() {
+  left: calc(#{dropdown-var(border-width)} * -1);
+  max-height: 15em;
+  opacity: 1;
+  transition: max-height 300ms ease, opacity 10ms ease;
+}
+
+//noinspection SassScssResolvedByNameOnly
+@mixin dropdown-search() {
+  margin: 0;
+  padding: 0.5em;
+  border-bottom: dropdown-var(border);
+  position: relative;
+
+  input {
+    width: 100%;
+    color: inherit;
+    border: dropdown-var(border);
+    border-radius: dropdown-var(border-radius);
+    font-size: 1em;
+    margin: 0;
+    padding: dropdown-var(item--padding);
+    padding-left: 2em;
+    box-sizing: border-box;
+
+    &:focus {
+      outline: 0;
+    }
+
+    &::placeholder {
+      color: dropdown-var(placeholder--color);
+      opacity: 1;
+    }
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 2.5em;
+    background-image: dropdown-var(search-icon);
+    background-repeat: no-repeat;
+    background-size: 1.6em;
+    background-position: right center;
+    z-index: 1;
+  }
+}
+
+//noinspection SassScssResolvedByNameOnly
+@mixin dropdown-results($is_ul: true) {
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+
+  @if ($is_ul) {
+    padding: 0;
+    margin: 0;
+  }
+
+  /* width */
+  &::-webkit-scrollbar {
+    width: dropdown-var(scroll-width);
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: dropdown-var(scroll-track--bg-color);
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: dropdown-var(scroll-thumb--bg-color);
+    border-radius: dropdown-var(border-radius);
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: dropdown-var(scroll-thumb-hover--bg-color);
+  }
+}
+
+//noinspection SassScssResolvedByNameOnly
+@mixin dropdown-option {
+  display: flex;
+  align-items: center;
+  height: 34px;
+  //padding: dropdown-var(item--padding);
+  -webkit-touch-callout: none;
+  word-wrap: break-word;
+  cursor: pointer;
+  border-bottom: dropdown-var(border);
+}
+
+//noinspection SassScssResolvedByNameOnly
+@mixin dropdown-option-active($faded: false) {
+  color: dropdown-var(active--color);
+  background-color: dropdown-var(active--background-color);
+}
